@@ -1,5 +1,5 @@
 * {
-  /* All the basic commands for the entire document in order for us to disable default CSS */
+  /* Reset default margins and padding */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,75 +8,158 @@
 .hero {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(45deg, #08001f, #30197d);
+  background: linear-gradient(135deg, #262d7e, #141421, #1f1f2e);
   color: #fff;
   position: relative;
 }
+/* Center container */
 .container {
   width: 800px;
-  height: 180px;
+  height: 260px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center the container w.r.t another */
+  transform: translate(-50%, -50%);
+  /* transform is used to center the container w.r.t another element */
 }
+/* Heading */
+.heading {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #cfcfff;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+/* Clock */
 .clock {
   width: 100%;
-  height: 100%;
-  background: rgba(235, 0, 255, 0.11);
-  border-radius: 10px;
+  height: 180px;
+  background: rgba(155, 144, 198, 0.475);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(40px); /* For the frosted glass effect */
+  backdrop-filter: blur(25px);
+  /* backdrop-filter is used to apply a blur effect to the background of the element */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    inset 0 0 10px rgba(255, 255, 255, 0.02);
+  /* box-shadow is used to apply shadow effects to the element */
 }
 /* ::before is a pseudo-element that creates a child element before the selected element */
 .container::before {
   content: "";
   width: 180px;
   height: 180px;
-  background: #f41b75;
-  border-radius: 5px;
+  background: #6c63ff;
+  border-radius: 50%;
   position: absolute;
-  left: -50px;
-  top: -50px;
-  z-index: -1; /* For the background effect like the screen popping */
+  left: -60px;
+  /* left is used to position the element relative to the left edge of its containing element */
+  top: -60px;
+  /* top is used to position the element relative to the top edge of its containing element */
+  opacity: 0.25;
+  /* opacity is used to set the transparency level of the element */
+  filter: blur(60px);
+  /* filter is used to apply graphical effects to the element */
+  z-index: -1;
+  /* z-index is used to control the stacking order of elements */
 }
 /* ::after is a pseudo-element that creates a child element after the selected element */
 .container::after {
   content: "";
   width: 180px;
   height: 180px;
-  background: #419aff;
+  background: #00c9a7;
   border-radius: 50%;
   position: absolute;
-  right: -30px;
-  bottom: -50px;
+  right: -60px;
+  /* right is used to position the element relative to the right edge of its containing element */
+  bottom: -60px;
+  /* bottom is used to position the element relative to the bottom edge of its containing element */
+  opacity: 0.25;
+  filter: blur(60px);
   z-index: -1;
 }
+/* Time */
 .clock span {
   font-size: 80px;
   width: 110px;
-  display: inline-block;
   text-align: center;
+  color: #f1f1f1;
+  letter-spacing: 2px;
   position: relative;
 }
+/* Labels */
 .clock span::after {
-  font-size: 16px;
+  font-size: 12px;
   position: absolute;
-  bottom: -10px;
+  bottom: -18px;
   left: 50%;
-  /* For the text to be centered below the time */
   transform: translateX(-50%);
-  /* translateX is a CSS function that moves an element horizontally */
+  color: #ede9e9;
+  font-weight: bold;
 }
 #hrs::after {
   content: "HOURS";
-  /* content is a CSS property that adds text content to an element */
+  /* content is used to insert generated content */
 }
 #min::after {
   content: "MINUTES";
 }
 #sec::after {
   content: "SECONDS";
+}
+/* Toggle */
+.toggle-container {
+  margin-top: 25px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-weight: bold;
+  color: #dbd8d8;
+}
+.switch {
+  position: relative;
+  width: 45px;
+  height: 22px;
+}
+.switch input {
+  display: none;
+}
+.slider {
+  position: absolute;
+  background: #444;
+  border-radius: 30px;
+  inset: 0;
+  /* inset is used to set the top, right, bottom, and left properties in a single declaration */
+  cursor: pointer;
+  /* cursor is used to change the mouse cursor when hovering over the element */
+  transition: 0.3s;
+  /* transition is used to apply smooth animations to the element */
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+/* Checked state */
+/* input:checked + .slider is used to select the slider element when the input is checked */
+input:checked + .slider {
+  background: #6c63ff;
+}
+/* input:checked + .slider::before is used to select the slider element's before pseudo-element when the input is checked */
+input:checked + .slider::before {
+  transform: translateX(22px);
 }

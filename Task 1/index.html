@@ -9,12 +9,22 @@
   <body>
     <div class="hero">
       <div class="container">
+        <h2 class="heading">Digital Clock</h2>
         <div class="clock">
-          <span id="hrs">00</span>
+          <span id="hrs">--</span>
+          <!-- This is so that 00:00:00 does not appear on screen while loading the website. -->
           <span>:</span>
-          <span id="min">00</span>
+          <span id="min">--</span>
           <span>:</span>
-          <span id="sec">00</span>
+          <span id="sec">--</span>
+        </div>
+        <div class="toggle-container">
+          <span>12H</span>
+          <label class="switch">
+            <input type="checkbox" id="formatToggle" />
+            <span class="slider"></span>
+          </label>
+          <span>24H</span>
         </div>
       </div>
     </div>
