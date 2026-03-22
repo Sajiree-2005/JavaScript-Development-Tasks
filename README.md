@@ -58,8 +58,6 @@ I have successfully completed the following 4 tasks:
 
 ---
 
----
-
 ## 💡 Key Learnings
 
 - Strengthened **JavaScript fundamentals**
